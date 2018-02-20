@@ -1,0 +1,6 @@
+---
+- name: Ping module
+  hosts: servers
+  tasks:
+    - name: ping to all servers
+      ping:
