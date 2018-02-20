@@ -16,5 +16,5 @@ sudo apt-get install ansible
 
 How to Execute the playbook
 
-ansiple-playbook inventory_name playbook.yml
+ansible-playbook inventory_name playbook.yml
 
