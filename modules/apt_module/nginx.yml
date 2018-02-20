@@ -3,4 +3,7 @@
   hosts: servers
   tasks:
     - name: install nginx
-      apt: name=nginx state=latest update_cache= yes
+      apt: name=nginx state=latest update_cache=yes
+
+    - name: remove nginx
+      apt: name=nginx state=absent update_cache=yes
