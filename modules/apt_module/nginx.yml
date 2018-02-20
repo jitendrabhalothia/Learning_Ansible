@@ -1,0 +1,6 @@
+---
+- name: nginx
+  hosts: servers
+  tasks:
+    - name: install nginx
+      apt: name=nginx state=latest update_cache= yes
