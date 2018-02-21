@@ -1,0 +1,20 @@
+---
+vpcid:  
+region:  ap-south-1
+boto_profile: aws_exp
+vpc_vars: trl
+
+vpc:
+  cidr_block: 172.24.0.0/22
+  name: trl
+  subnets:
+    - az: "ap-south-1a"
+      cidr: "172.24.0.0/26"
+      name: trl_public_1a
+    - az: "ap-south-1b"
+      cidr: "172.24.0.64/26"
+      name: trl_pub_1b
+    
+
+  
+

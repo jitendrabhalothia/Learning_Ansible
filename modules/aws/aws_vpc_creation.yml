@@ -1,0 +1,38 @@
+---
+- name: AWS-VPC-CREATION
+  hosts: localhost
+  connection: local 
+
+  vars_files: 
+  - "vars/{{vpc_vars}}"
+
+  tasks:
+    - name: Create VPC
+      local_action:
+        module: ec2_vpc_net
+        profile: "{{ boto_profile }}"
+        cidr_block: "{{ vpc.cidr_block }}"
+        name: "{{ vpc.name }}"
+        region: "{{ region }}"
+        state: present
+      register: vpc_result
+     
+
+
+    - name: Create Subnets
+      local_action:
+        module: ec2_vpc_subnet
+        profile: "{{ boto_profile }}"
+        az: "{{ item.az }}"
+        cidr: "{{ item.cidr }}"
+        region: "{{ region }}"
+        vpc_id: "{{ vpc_result.vpc.id }}"
+        tags:
+          Name: "{{ item.name }}"
+        state: present
+      with_items: "{{ vpc.subnets }}"
+      tags:
+        - subnet
+
+
+
